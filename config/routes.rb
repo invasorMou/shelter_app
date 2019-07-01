@@ -6,5 +6,7 @@ Rails.application.routes.draw do
   get 'dogs/:id/show', to: 'dogs#show', as: :dog_show
   post '/dogs', to: 'dogs#create'
   delete 'dogs/:id/delete', to: 'dogs#delete', as: :dog_delete
-  # resources :dogs
+  get 'dogs/:id/edit', to: 'dogs#edit', as: :dog_edit
+  patch 'dogs/:id/update', to: 'dogs#update', as: :dog_update
+
 end

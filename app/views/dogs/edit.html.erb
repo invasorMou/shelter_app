@@ -1,0 +1,11 @@
+<% if flash[:success] %>
+  <div class="success"><%= flash[:success] %></div>
+<% end %>
+
+<h1>Update <%= @dog.name %></h1>
+<%= form_for @dog, url: dog_update_path(@dog.id) do |form| %>
+  Name:<%= form.text_field :name %><br />
+  Age: <%= form.text_field :age %><br />
+  Breed: <%= form.text_field :breed %><br />
+  <%= form.submit 'Update' %>
+<% end %>
