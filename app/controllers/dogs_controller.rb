@@ -12,8 +12,13 @@ class DogsController < ApplicationController
   end
 
   def create
-    Dog.create(dog_params)
-    redirect_to new_dog_path, flash: {success: 'Your dog was created'}
+    dog = Dog.new(dog_params)
+    if dog.save
+      message =  {success: 'Your dog was created'}
+    else
+      message =  {success: dog.errors.full_messages.to_sentence}
+    end
+    redirect_to new_dog_path, flash: message
   end
 
   def update
