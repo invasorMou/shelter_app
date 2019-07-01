@@ -1,6 +1,6 @@
 class DogsController < ApplicationController
   def new
-    @dog = Dog.new()
+    @dog = Dog.new
   end
 
   def index
@@ -8,40 +8,37 @@ class DogsController < ApplicationController
   end
 
   def show
-    id = params[:id]
-    @dog = Dog.find(id)
+    load_dog
   end
 
   def create
     Dog.create(dog_params)
-    flash[:success] = 'your dog was created'
-    redirect_to '/dogs/new'
+    redirect_to new_dog_path, flash: {success: 'Your dog was created'}
   end
 
   def update
-    id = params[:id]
-    @dog = Dog.find(id)
+    load_dog
     @dog.update(dog_params)
-    flash[:success] = 'your dog was updated'
-    redirect_to dog_edit_path(@dog)
+    redirect_to edit_dog_path(@dog), flash: {success: 'Your dog was updated'}
   end
 
-  def delete
-    id = params[:id]
-    @dog = Dog.find(id)
+  def destroy
+    load_dog
     @dog.destroy
-    flash[:success] = 'your dog was deleted'
-    redirect_to '/dogs/index'
+    redirect_to dogs_path, flash: {success: 'Your dog was deleted'}
   end
 
   def edit
-    id = params[:id]
-    @dog = Dog.find(id)
+    load_dog
   end
 
   private
 
   def dog_params
     params.require(:dog).permit(:name, :age, :breed)
+  end
+
+  def load_dog
+    @dog = Dog.find(params[:id])
   end
 end

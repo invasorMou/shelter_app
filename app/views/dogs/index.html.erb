@@ -7,9 +7,9 @@
   <% @dogs.each do |dog| %>
     <li>
       <%= dog.name.capitalize %>
-      <%= link_to 'Info', dog_show_path(dog) %>
-      <%= link_to 'Update info', dog_edit_path(dog) %>
-      <%= link_to 'Delete', dog_delete_path(dog), method: :delete %>
+      <%= link_to 'Info', dog_path(dog) %>
+      <%= link_to 'Update info', edit_dog_path(dog) %>
+      <%= link_to 'Delete', dog_path(dog), method: :delete %>
     </li>
   <% end %>
 </ol>

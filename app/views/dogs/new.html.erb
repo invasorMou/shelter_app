@@ -3,7 +3,7 @@
 <% end %>
 
 <h1>Create a new Dog</h1>
-<%= form_for :dog, url: dogs_path, action: :create do |form| %>
+<%= form_for @dog do |form| %>
   Name:<%= form.text_field :name %><br />
   Age: <%= form.text_field :age %><br />
   Breed: <%= form.text_field :breed %><br />
