@@ -13,8 +13,7 @@ class DogsController < ApplicationController
   end
 
   def create
-    dog = params[:dog]
-    Dog.create(name: dog[:name], age: dog[:age], breed:dog[:breed])
+    Dog.create(dog_params)
     flash[:success] = 'your dog was created'
     redirect_to '/dogs/new'
   end
@@ -22,8 +21,7 @@ class DogsController < ApplicationController
   def update
     id = params[:id]
     @dog = Dog.find(id)
-    dog_data = params[:dog]
-    @dog.update(name: dog_data[:name], age: dog_data[:age], breed:dog_data[:breed])
+    @dog.update(dog_params)
     flash[:success] = 'your dog was updated'
     redirect_to dog_edit_path(@dog)
   end
@@ -39,5 +37,11 @@ class DogsController < ApplicationController
   def edit
     id = params[:id]
     @dog = Dog.find(id)
+  end
+
+  private
+
+  def dog_params
+    params.require(:dog).permit(:name, :age, :breed)
   end
 end
