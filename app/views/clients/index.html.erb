@@ -3,6 +3,9 @@
 <ol>
   <% @clients.each do |client| %>
     <li>
+      <div class="card custom-card">
+
+      </div>
       <%= client.name.capitalize %>
       <%= link_to 'Info', client_path(client) %>
       <%= link_to 'Update info', edit_client_path(client) %>

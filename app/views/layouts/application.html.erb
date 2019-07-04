@@ -13,7 +13,7 @@
     <% if flash[:success] %>
       <div class="success"><%= flash[:success] %></div>
     <% end %>
-    <%= link_to 'Home', root_path %>
+    <%= link_to 'Home', root_path, class: 'test' %>
     <%= yield %>
   </body>
 </html>
