@@ -1,0 +1,12 @@
+<h1>List of Clients</h1>
+
+<ol>
+  <% @clients.each do |client| %>
+    <li>
+      <%= client.name.capitalize %>
+      <%= link_to 'Info', client_path(client) %>
+      <%= link_to 'Update info', edit_client_path(client) %>
+      <%= link_to 'Delete', client_path(client), method: :delete %>
+    </li>
+  <% end %>
+</ol>
