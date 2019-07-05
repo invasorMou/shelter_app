@@ -13,7 +13,57 @@
     <% if flash[:success] %>
       <div class="success"><%= flash[:success] %></div>
     <% end %>
-    <%= link_to 'Home', root_path, class: 'test' %>
-    <%= yield %>
+
+    <div class="sidebar shadow-lg p-3 mb-5 bg-white rounded">
+      <div class="w-100 text-center">
+        <%= link_to root_path do %>
+          <img src="https://static.thenounproject.com/png/52856-200.png" alt="" width="70">
+        <% end %>
+      </div>
+      <div class=" w-100">
+        <h3>Dogs</h3>
+
+        <%= link_to new_dog_path  do %>
+          <div class="pl-5 mt-3 border-bottom">
+            <p>
+              Create a dog
+            </p>
+          </div>
+        <% end %>
+
+        <%= link_to dogs_path  do %>
+          <div class="pl-5 mt-3 border-bottom">
+            <p>
+              See all the dogs
+            </p>
+          </div>
+        <% end %>
+
+      </div>
+      <div class="w-100">
+        <h3>Clients</h3>
+
+        <%= link_to new_client_path  do %>
+          <div class="pl-5 mt-3 border-bottom">
+            <p>
+              Create a client
+            </p>
+          </div>
+        <% end %>
+
+        <%= link_to clients_path  do %>
+          <div class="pl-5 mt-3 border-bottom">
+            <p>
+              See all the clients
+            </p>
+          </div>
+        <% end %>
+
+      </div>
+    </div>
+
+    <div class="main d-flex justify-content-center align-items-center">
+      <%= yield %>
+    </div>
   </body>
 </html>

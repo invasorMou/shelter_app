@@ -1,15 +1,30 @@
-<h1>List of Clients</h1>
+<div class="w-100 text-center h-100 p-4">
+  <h1>List of Clients</h1>
 
-<ol>
-  <% @clients.each do |client| %>
-    <li>
-      <div class="card custom-card">
+  <div class="dogs-index d-flex flex-wrap ml-5 overflow-auto">
+    <table class="table mt-5">
+      <thead class="thead-dark">
+        <tr>
+          <th>N</th>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Email</th>
+          <th colspan="2">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @clients.each_with_index do |client, idx| %>
+          <tr>
+            <td><%= idx + 1 %></td>
+            <td><%= client.name.capitalize %></td>
+            <td><%= client.age %></td>
+            <td><%= client.email %></td>
+            <td><%= link_to 'Update', edit_client_path(client), class: 'btn btn-primary' %></td>
+            <td><%= link_to 'Delete', client_path(client), method: :delete, class: 'btn btn-danger' %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
 
-      </div>
-      <%= client.name.capitalize %>
-      <%= link_to 'Info', client_path(client) %>
-      <%= link_to 'Update info', edit_client_path(client) %>
-      <%= link_to 'Delete', client_path(client), method: :delete %>
-    </li>
-  <% end %>
-</ol>
+  </div>
+</div>

@@ -1,12 +1,28 @@
-<h1>List of Dogs</h1>
 
-<ol>
-  <% @dogs.each do |dog| %>
-    <li>
-      <%= dog.name.capitalize %>
-      <%= link_to 'Info', dog_path(dog) %>
-      <%= link_to 'Update info', edit_dog_path(dog) %>
-      <%= link_to 'Delete', dog_path(dog), method: :delete %>
-    </li>
-  <% end %>
-</ol>
+<div class="w-100 text-center h-100 p-4">
+  <h1>You can adopt them!</h1>
+
+  <div class="dogs-index d-flex flex-wrap ml-5 overflow-auto">
+    <% @dogs.each do |dog| %>
+    <div class="card d-inline-flex w-25 m-5">
+      <div class="card-body">
+        <div class="card-title">
+          <%= dog.name.capitalize %>
+        </div>
+        <div class="">
+          <p>
+            Age: <%= dog.age %>
+          </p>
+          <p>
+            Breed: <%= dog.breed.capitalize %>
+          </p>
+        </div>
+        <%= link_to 'Update', edit_dog_path(dog), class: 'btn btn-primary' %>
+        <%= link_to 'Delete', dog_path(dog), method: :delete, class: 'btn btn-danger' %>
+      </div>
+
+    </div>
+    <% end %>
+  </div>
+
+</div>
