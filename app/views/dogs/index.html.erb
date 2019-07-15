@@ -7,6 +7,7 @@
     <div class="card d-inline-flex w-25 m-5">
       <div class="card-body">
         <div class="card-title">
+          <%= image_tag(dog.avatar.url.to_s, class: 'w-100') %>
           <%= dog.name.capitalize %>
         </div>
         <div class="">
