@@ -10,8 +10,10 @@
   </head>
 
   <body>
-    <% if flash[:success] %>
-      <div class="success"><%= flash[:success] %></div>
+    <% if flash %>
+      <% flash.each do |type, msg| %>
+        <div class="success"><%= msg %></div>
+      <% end %>
     <% end %>
 
     <div class="sidebar shadow-lg p-3 mb-5 bg-white rounded">

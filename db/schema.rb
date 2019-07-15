@@ -10,14 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_04_011538) do
+ActiveRecord::Schema.define(version: 2019_07_15_041213) do
 
   create_table "clients", force: :cascade do |t|
     t.string "name"
     t.integer "age"
-    t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.index ["email"], name: "index_clients_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_clients_on_reset_password_token", unique: true
   end
 
   create_table "dogs", force: :cascade do |t|
@@ -25,6 +31,7 @@ ActiveRecord::Schema.define(version: 2019_07_04_011538) do
     t.integer "age"
     t.string "breed"
     t.integer "client_id"
+    t.string "avatar"
   end
 
 end
